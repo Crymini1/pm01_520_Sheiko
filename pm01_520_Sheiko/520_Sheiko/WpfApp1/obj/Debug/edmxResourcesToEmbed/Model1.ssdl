@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище pm01.ekzamenModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="County">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Eng_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Событие" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="Days" Type="int" Nullable="false" />
+    <Property Name="Город" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gender 2">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Jury">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="PolID" Type="int" Nullable="false" />
+    <Property Name="Почта" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Дата_рождения" Type="date" />
+    <Property Name="County_ID" Type="int" Nullable="false" />
+    <Property Name="телефон" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="направление" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="пароль" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="фото" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Moderator">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Date_btith" Type="date" Nullable="false" />
+    <Property Name="Country_ID" Type="int" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Napravlenie" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Event" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Organizatory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Data_birth" Type="date" Nullable="false" />
+    <Property Name="Country_ID" Type="int" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PolID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Uchastniki">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="FIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Data_birth" Type="date" Nullable="false" />
+    <Property Name="Country_ID" Type="int" Nullable="false" />
+    <Property Name="Telephone" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PolID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_City_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jury_County">
+    <End Role="County" Type="Self.County" Multiplicity="1" />
+    <End Role="Jury" Type="Self.Jury" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Jury">
+        <PropertyRef Name="County_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jury_Gender 2">
+    <End Role="Gender 2" Type="Self.Gender 2" Multiplicity="1" />
+    <End Role="Jury" Type="Self.Jury" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender 2">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Jury">
+        <PropertyRef Name="PolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Moderator_County">
+    <End Role="County" Type="Self.County" Multiplicity="1" />
+    <End Role="Moderator" Type="Self.Moderator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Moderator">
+        <PropertyRef Name="Country_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organizatory_County">
+    <End Role="County" Type="Self.County" Multiplicity="1" />
+    <End Role="Organizatory" Type="Self.Organizatory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Organizatory">
+        <PropertyRef Name="Country_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Organizatory_Gender 2">
+    <End Role="Gender 2" Type="Self.Gender 2" Multiplicity="1" />
+    <End Role="Organizatory" Type="Self.Organizatory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender 2">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Organizatory">
+        <PropertyRef Name="PolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uchastniki_County1">
+    <End Role="County" Type="Self.County" Multiplicity="1" />
+    <End Role="Uchastniki" Type="Self.Uchastniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="County">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Uchastniki">
+        <PropertyRef Name="Country_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uchastniki_Gender 2">
+    <End Role="Gender 2" Type="Self.Gender 2" Multiplicity="1" />
+    <End Role="Uchastniki" Type="Self.Uchastniki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender 2">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Uchastniki">
+        <PropertyRef Name="PolID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище pm01ekzamenModelContainer">
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="County" EntityType="Self.County" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender 2" EntityType="Self.Gender 2" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Jury" EntityType="Self.Jury" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Moderator" EntityType="Self.Moderator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Organizatory" EntityType="Self.Organizatory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uchastniki" EntityType="Self.Uchastniki" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_City_Event" Association="Self.FK_City_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jury_County" Association="Self.FK_Jury_County">
+      <End Role="County" EntitySet="County" />
+      <End Role="Jury" EntitySet="Jury" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jury_Gender 2" Association="Self.FK_Jury_Gender 2">
+      <End Role="Gender 2" EntitySet="Gender 2" />
+      <End Role="Jury" EntitySet="Jury" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Moderator_County" Association="Self.FK_Moderator_County">
+      <End Role="County" EntitySet="County" />
+      <End Role="Moderator" EntitySet="Moderator" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizatory_County" Association="Self.FK_Organizatory_County">
+      <End Role="County" EntitySet="County" />
+      <End Role="Organizatory" EntitySet="Organizatory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Organizatory_Gender 2" Association="Self.FK_Organizatory_Gender 2">
+      <End Role="Gender 2" EntitySet="Gender 2" />
+      <End Role="Organizatory" EntitySet="Organizatory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uchastniki_County1" Association="Self.FK_Uchastniki_County1">
+      <End Role="County" EntitySet="County" />
+      <End Role="Uchastniki" EntitySet="Uchastniki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uchastniki_Gender 2" Association="Self.FK_Uchastniki_Gender 2">
+      <End Role="Gender 2" EntitySet="Gender 2" />
+      <End Role="Uchastniki" EntitySet="Uchastniki" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

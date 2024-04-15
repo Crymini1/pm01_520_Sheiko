@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="Login" Height="300" Width="400">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <StackPanel Margin="20,20,19,10">
+            <TextBlock Text="Авторизация" Foreground="Black" FontWeight="Bold" FontSize="20" Margin="0 0 0 20"/>
+
+            <TextBlock Text="IdNumber" Foreground="Black" FontWeight="Bold" Margin="0 0 0 5"/>
+            <TextBox x:Name="txtLogin" Height="20" Margin="0 0 0 10"/>
+
+            <TextBlock Text="Password" Foreground="Black" FontWeight="Bold" Margin="0 0 0 5"/>
+            <PasswordBox x:Name="txtPassword" Height="20" Margin="0 0 0 10"/>
+
+            <Button Content="Войти" Width="100" Height="30" Click="Button_Click" >
+            </Button>
+
+            <Button Content="Регистрация" Width="100" Height="30"  Margin="0 10 0 0" Click="Button_Click_1">
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

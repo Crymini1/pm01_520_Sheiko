@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="214daad80d874badaf63f5efa13f8e33" Name="Diagram1">
+        <EntityTypeShape EntityType="pm01.ekzamenModel.City" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pm01.ekzamenModel.County" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="pm01.ekzamenModel.Event" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pm01.ekzamenModel.Gender_2" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="pm01.ekzamenModel.Jury" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pm01.ekzamenModel.Moderator" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pm01.ekzamenModel.Organizatory" Width="1.5" PointX="6" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pm01.ekzamenModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pm01.ekzamenModel.Uchastniki" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="pm01.ekzamenModel.FK_City_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="pm01.ekzamenModel.FK_Jury_County" ManuallyRouted="false" />
+        <AssociationConnector Association="pm01.ekzamenModel.FK_Moderator_County" ManuallyRouted="false" />
+        <AssociationConnector Association="pm01.ekzamenModel.FK_Organizatory_County" ManuallyRouted="false" />
+        <AssociationConnector Association="pm01.ekzamenModel.FK_Uchastniki_County1" ManuallyRouted="false" />
+        <AssociationConnector Association="pm01.ekzamenModel.FK_Jury_Gender_2" ManuallyRouted="false" />
+        <AssociationConnector Association="pm01.ekzamenModel.FK_Organizatory_Gender_2" ManuallyRouted="false" />
+        <AssociationConnector Association="pm01.ekzamenModel.FK_Uchastniki_Gender_2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
